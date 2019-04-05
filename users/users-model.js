@@ -1,12 +1,13 @@
+//database configuration
 const db = require('../database/dbConfig.js');
-
+//functions exports
 module.exports = {
   add,
   find,
   findBy,
   findById,
 };
-
+//helper functions for CRUD
 function find() {
   return db('users').select('id', 'username', 'password');
 }

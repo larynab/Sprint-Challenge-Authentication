@@ -1,11 +1,16 @@
+//router module
 const router = require("express").Router();
+//cryptography module
 const bcrypt = require("bcryptjs");
+//token module
 const jwt = require("jsonwebtoken");
-
+//super secret currying with JWT
 const secret = require("../api/secrets").jwtSecret;
+//helper function
 const Users = require("../users/users-model.js");
 
 //CRUD Auth
+//POST REGISTER
 router.post("/register", (req, res) => {
   let user = req.body;
   const hash = bcrypt.hashSync(user.password, 10);
@@ -20,6 +25,7 @@ router.post("/register", (req, res) => {
     });
 });
 
+//POST LOGIN
 router.post("/login", (req, res) => {
   let { username, password } = req.body;
 
@@ -42,6 +48,7 @@ router.post("/login", (req, res) => {
     });
 });
 
+//CREATE TOKEN for LOGIN
 function generateToken(user) {
   const payload = {
     subject: user.id,
@@ -54,5 +61,5 @@ function generateToken(user) {
 
   return jwt.sign(payload, secret, options);
 }
-
+//export
 module.exports = router;

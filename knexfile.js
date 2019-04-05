@@ -1,5 +1,5 @@
 // Update with your config settings.
-
+//Knex schematics for creating sqlite3 database
 module.exports = {
   development: {
     client: 'sqlite3',

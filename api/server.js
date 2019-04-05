@@ -8,7 +8,6 @@ const helmet = require("helmet");
 const axios = require("axios");
 //routers
 const authRouter = require("../auth/auth-router.js");
-const usersRouter = require("../users/users-router.js");
 const restricted = require("../auth/restricted-middleware.js");
 //server
 const server = express();
@@ -18,7 +17,6 @@ server.use(cors());
 server.use(express.json());
 //routing
 server.use("/api/auth", authRouter);
-server.use("/api/users", restricted, usersRouter);
 //Server is accessing api offsite using getJokes function
 server.get("/api/jokes", restricted, getJokes);
 //function used in API jokes
