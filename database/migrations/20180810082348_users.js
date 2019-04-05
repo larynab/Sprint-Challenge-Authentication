@@ -1,3 +1,4 @@
+//Table for USERNAME and PASSWORD
 exports.up = function(knex) {
   return knex.schema.createTable('users', users => {
     users.increments();
