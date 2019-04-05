@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://icanhazdadjoke.com/search';
+axios.defaults.baseURL = 'http://localhost:3300/api';
 
 axios.interceptors.request.use(function(requestConfig) {
   const token = localStorage.getItem('token');

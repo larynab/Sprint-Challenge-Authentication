@@ -5,7 +5,7 @@ import requiresAuth from '../auth/requiresAuth';
 
 class Jokes extends React.Component {
   state = {
-    joke: [],
+    jokes: [],
   };
 
   render() {
@@ -13,7 +13,7 @@ class Jokes extends React.Component {
       <>
         <h2>List of Jokes</h2>
         <ul>
-          {this.state.joke.map(u => (
+          {this.state.jokes.map(u => (
             <li key={u.id}>{u.joke}</li>
           ))}
         </ul>
@@ -22,8 +22,9 @@ class Jokes extends React.Component {
   }
 
   componentDidMount() {
+    const endpoint = `/jokes`;
     axios
-    .get("https://icanhazdadjoke.com/search")
+      .get(endpoint)
     .then(res => {
         this.setState({ users: res.data });
       })
